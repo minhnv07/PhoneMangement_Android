@@ -1,0 +1,27 @@
+# Android
+.gradle/
+.idea/
+local.properties
+*.iml
+build/
+captures/
+.externalNativeBuild/
+
+# Mac/Linux
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Keystore (nếu có)
+*.jks
+
+# APK
+*.apk
+*.ap_
+
+# Auto-generated
+.cxx/

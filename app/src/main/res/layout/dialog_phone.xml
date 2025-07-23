@@ -1,0 +1,39 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/etPhoneName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên điện thoại"
+            android:inputType="text"/>
+
+        <Spinner
+            android:id="@+id/spnManufacturer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etScreenSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kích thước màn hình (inch)"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="8dp"/>
+
+        <EditText
+            android:id="@+id/etRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Đánh giá"
+            android:inputType="text"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</ScrollView>

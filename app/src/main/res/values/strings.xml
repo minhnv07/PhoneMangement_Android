@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ĐIỆN THOẠI</string>
+    <string name="main_title">Trang chủ</string>
+    <string name="manage_manufacturers">Quản lý hãng sản xuất</string>
+    <string name="manage_phones">Quản lý điện thoại</string>
+    <string name="search_phones">Tìm kiếm điện thoại</string>
+    <string name="add_manufacturer">Thêm hãng sản xuất</string>
+    <string name="home">Trang chủ</string>
+</resources>
