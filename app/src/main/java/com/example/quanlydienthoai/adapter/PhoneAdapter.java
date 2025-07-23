@@ -41,7 +41,7 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
 
     public void onBindViewHolder(ViewHolder holder, int position) {
         Phone phone = phones.get(position);
-        holder.tvName.setText(phone.getName());
+        holder.tvPhoneName.setText(phone.getName());
         String manufacturerName = manufacturerMap.get(phone.getManufacturerId());
         holder.tvManufacturer.setText("Hãng: " + (manufacturerName == null ? "?" : manufacturerName));
         holder.tvScreenSize.setText("Kích thước màn hình: " + phone.getScreenSize() + " inch");
@@ -63,13 +63,13 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName;
+        TextView tvPhoneName;
         TextView tvManufacturer;
         TextView tvScreenSize;
         TextView tvRating;
         public ViewHolder(View itemView) {
             super(itemView);
-            tvName = itemView.findViewById(R.id.tvName);
+            tvPhoneName = itemView.findViewById(R.id.tvPhoneName);
             tvManufacturer = itemView.findViewById(R.id.tvManufacturer);
             tvScreenSize = itemView.findViewById(R.id.tvScreenSize);
             tvRating = itemView.findViewById(R.id.tvRating);
