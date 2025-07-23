@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class PhoneListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -40,6 +41,8 @@ public class PhoneListActivity extends AppCompatActivity {
         loadData();
 
         btnAdd.setOnClickListener(v -> showAddDialog());
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.phone);
     }
 
     private void loadData(){
@@ -146,5 +149,10 @@ public class PhoneListActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Hủy", null)
                 .show();
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

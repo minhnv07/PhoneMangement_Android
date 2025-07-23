@@ -37,7 +37,7 @@ public class ManufacturerListActivity  extends AppCompatActivity {
 
         btnAdd.setOnClickListener(v -> showAddDialog());
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setTitle(R.string.manufacturer);
     }
 
     private void loadData() {
