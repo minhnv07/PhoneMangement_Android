@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DB_NAME, null, VERSION);
     }
 
-    public void onCreate(@NonNull SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Manufacturer(" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "name TEXT," +
@@ -117,6 +117,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int deletePhone(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete("Phone", "id=?", new String[]{String.valueOf(id)});
+    }
+
+    public List<Phone> searchPhones(Integer manufacturerId, Boolean isGreater6) {
+        List<Phone> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        StringBuilder sql = new StringBuilder("SELECT * FROM Phone WHERE 1=1");
+        List<String> args = new ArrayList<>();
+
+        if (manufacturerId != null && manufacturerId != -1) {
+            sql.append(" AND manufacturerId=?");
+            args.add(String.valueOf(manufacturerId));
+        }
+        if(isGreater6 != null){
+            if(isGreater6){
+                sql.append(" AND screenSize > 6");
+            }
+            else{
+                sql.append(" AND screenSize <= 6");
+            }
+        }
+
+        Cursor cursor = db.rawQuery(sql.toString(), args.toArray(new String[0]));
+        while (cursor.moveToNext()) {
+            int id;
+            id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+            int manufacturerId1 = cursor.getInt(cursor.getColumnIndexOrThrow("manufacturerId"));
+            float screenSize = cursor.getFloat(cursor.getColumnIndexOrThrow("screenSize"));
+            String rating = cursor.getString(cursor.getColumnIndexOrThrow("rating"));
+            list.add(new Phone(id, name, manufacturerId1, screenSize, rating));
+        }
+        cursor.close();
+        return list;
     }
 }
 

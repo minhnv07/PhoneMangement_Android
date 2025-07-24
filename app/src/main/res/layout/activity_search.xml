@@ -1,112 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:fillViewport="true">
+    android:padding="12dp"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/layoutSearchBar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Phần tìm kiếm theo hãng -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tìm theo hãng sản xuất"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="12dp"/>
-
-                <Spinner
-                    android:id="@+id/spinnerManufacturer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="48dp"
-                    android:layout_marginBottom="8dp"
-                    tools:ignore="HardcodedText" />
-
-                <Button
-                    android:id="@+id/btnSearchByManufacturer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tìm theo hãng"
-                    android:backgroundTint="@color/black"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Phần tìm kiếm theo kích thước màn hình (ĐÃ SỬA) -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardElevation="4dp"
-            app:cardCornerRadius="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tìm theo kích thước màn hình"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="12dp"/>
-
-                <!-- Sử dụng Spinner thay vì EditText -->
-                <Spinner
-                    android:id="@+id/spinnerScreenSize"
-                    android:layout_width="match_parent"
-                    android:minHeight="48dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    tools:ignore="HardcodedText" />
-
-                <Button
-                    android:id="@+id/btnSearchByScreenSize"
-                    android:layout_width="match_parent"
-
-                    android:layout_height="wrap_content"
-                    android:text="Tìm theo kích thước"
-                    android:backgroundTint="@color/black"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Kết quả tìm kiếm -->
+        <!-- Nhãn cho Spinner -->
         <TextView
-            android:id="@+id/tvResultsTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kết quả tìm kiếm"
+            android:text="Chọn hãng"
             android:textStyle="bold"
-            android:textSize="18sp"
-            android:visibility="gone"
-            android:layout_marginTop="16dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
+
+        <Spinner
+            android:id="@+id/spnManufacturer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dropdown"
             android:layout_marginBottom="8dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSearchResults"
+        <!-- Nhãn cho RadioGroup -->
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Chọn kích cỡ"
+            android:textStyle="bold"
+            android:paddingTop="8dp"
+            android:paddingBottom="2dp"/>
+
+        <RadioGroup
+            android:id="@+id/rgScreenSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbGreater6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="> 6 inch"/>
+
+            <RadioButton
+                android:id="@+id/rbLessOrEqual6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="≤ 6 inch"
+                android:layout_marginStart="16dp"/>
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tìm kiếm"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
-</ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSearch"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/layoutSearchBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
