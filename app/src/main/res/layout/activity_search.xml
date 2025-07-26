@@ -26,28 +26,27 @@
             android:text="Chọn hãng"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"/>
+            android:paddingTop="5dp"/>
 
         <Spinner
             android:id="@+id/spnManufacturer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:spinnerMode="dropdown"
-            android:layout_marginBottom="8dp"
             android:minHeight="35dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"/>
 
         <!-- Nhãn cho RadioGroup -->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chọn kích cỡ màn hình"
-            android:textStyle="bold"
-            android:textSize="16sp"
             android:paddingTop="4dp"
-            android:paddingBottom="2dp"/>
+            android:paddingBottom="2dp"
+            android:text="Chọn kích cỡ màn hình"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/rgScreenSize"

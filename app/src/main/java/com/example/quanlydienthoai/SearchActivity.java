@@ -65,4 +65,10 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new PhoneAdapter(this, resultList, manufacturerMap, null);
         recyclerSearch.setAdapter(adapter);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 }

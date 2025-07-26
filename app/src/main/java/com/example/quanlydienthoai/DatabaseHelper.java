@@ -34,6 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "screenSize REAL," +
                 "rating TEXT," +
                 "FOREIGN KEY(manufacturerId) REFERENCES Manufacturer(id))");
+
     }
 
     @Override
